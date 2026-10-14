@@ -1,0 +1,55 @@
+{
+  "brand": "자연수정벌",
+  "reviewed_at": "2026-10-14",
+  "official_channels": {
+    "store": "https://smartstore.naver.com/sujungbul",
+    "blog": "https://blog.naver.com/naturebul",
+    "instagram": "https://www.instagram.com/nature_bumblebee/",
+    "talk": "https://talk.naver.com/ct/wc9606"
+  },
+  "photographs": [
+    {
+      "asset": "assets/brand/arrival-1.jpg",
+      "source": "https://blog.naver.com/naturebul/224226639235",
+      "description": "배송 상자 안에 고정된 자연수정벌 벌통"
+    },
+    {
+      "asset": "assets/site-product.jpg",
+      "source": "https://blog.naver.com/naturebul/224226639235",
+      "description": "청송 야외 바위 위에 놓인 자연수정벌 벌통"
+    },
+    {
+      "asset": "assets/brand/arrival-4.jpg",
+      "source": "https://blog.naver.com/naturebul/224226639235",
+      "description": "시설 하우스 안에 설치된 벌통과 출입구"
+    },
+    {
+      "asset": "assets/brand/arrival-7.jpg",
+      "source": "https://blog.naver.com/naturebul/224226639235",
+      "description": "우체국 앞 운반대에 쌓인 자연수정벌 택배 상자"
+    },
+    {
+      "asset": "assets/site-field.jpg",
+      "source": "https://blog.naver.com/naturebul/224317270965",
+      "description": "토마토 하우스 방문 현장과 설치한 벌통 2개"
+    },
+    {
+      "asset": "assets/site-bee.jpg",
+      "source": "https://www.instagram.com/p/DXJLkWqGXqF/",
+      "description": "체리꽃에서 꽃가루를 모으는 실제 호박벌"
+    },
+    {
+      "asset": "assets/brand/generation-1.jpg",
+      "source": "https://blog.naver.com/naturebul/224400652582",
+      "description": "자연수정벌사육장 앞에서 제품을 든 실제 가족 4인"
+    },
+    {
+      "asset": "assets/brand/producer-4.jpg",
+      "source": "https://blog.naver.com/naturebul/224238431952",
+      "description": "제1 뒤영벌 사육장 건물 외관"
+    }
+  ],
+  "crop_art": "Original SVG botanical illustrations.",
+  "flight": "Procedural Three.js bumblebee and meadow.",
+  "selling_conditions": "Current price, bee count, lead time and compensation policy are not stated; confirm via official seller."
+}

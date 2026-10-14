@@ -110,8 +110,8 @@ export function createMeadow({ mobile = false, path } = {}) {
   floorGeometry.translate(0, 0, -78);
   const floorPositions = floorGeometry.attributes.position;
   const floorColors = new Float32Array(floorPositions.count * 3);
-  const moss = new THREE.Color('#3f5533');
-  const lichen = new THREE.Color('#667641');
+  const moss = new THREE.Color('#587c39');
+  const lichen = new THREE.Color('#8ba952');
   for (let i = 0; i < floorPositions.count; i++) {
     const x = floorPositions.getX(i), z = floorPositions.getZ(i);
     floorPositions.setY(i, groundHeight(x, z));
@@ -144,17 +144,20 @@ export function createMeadow({ mobile = false, path } = {}) {
       .replace('#include <color_fragment>', `#include <color_fragment>
        float floorGrain = meadowNoise(vMeadowFloor.xz * 5.0);
        float floorFleck = meadowNoise(vMeadowFloor.xz * 19.0);
-       diffuseColor.rgb *= 0.87 + 0.17 * floorGrain + 0.08 * floorFleck;`);
+       diffuseColor.rgb *= 0.94 + 0.10 * floorGrain + 0.035 * floorFleck;`);
   };
-  floorMaterial.customProgramCacheKey = () => 'moss-floor-v1';
+  floorMaterial.customProgramCacheKey = () => 'moss-floor-v2';
   const floor = new THREE.Mesh(floorGeometry, floorMaterial);
   floor.name = 'Mottled moss floor';
   floor.receiveShadow = true;
   group.add(floor);
 
   const grassGeometry = makeGrassClump();
-  const grassMaterial = plantMaterial({ color: '#ffffff', vertexColors: true });
-  const grassPalette = ['#4e6b35', '#6b8246', '#819452', '#3b582e', '#72894b', '#5b7441'].map(c => new THREE.Color(c));
+  const grassMaterial = plantMaterial({
+    color: '#ffffff', vertexColors: true,
+    emissive: '#617a34', emissiveIntensity: 0.07,
+  });
+  const grassPalette = ['#759c44', '#93af5b', '#a4ba65', '#5e873c', '#87a652', '#6e974b'].map(c => new THREE.Color(c));
   const grassCount = mobile ? 6500 : 12000;
   const depthChunks = 16;
   const grassPerChunk = Array.from({ length: depthChunks }, () => []);
@@ -180,7 +183,7 @@ export function createMeadow({ mobile = false, path } = {}) {
           : 0.55 + Math.pow(random(), 0.85) * 1.55;
     const spread = short ? 0.9 + random() * 0.7 : 0.65 + random() * 0.85;
     const tint = grassPalette[Math.floor(random() * grassPalette.length)].clone();
-    tint.multiplyScalar(0.87 + random() * 0.24);
+    tint.multiplyScalar(0.94 + random() * 0.15);
     grassPerChunk[Math.min(depthChunks - 1, Math.floor((12 - z) / 187 * depthChunks))].push({
       x, z, height, spread, tint, yaw: random() * Math.PI * 2,
     });
@@ -197,9 +200,9 @@ export function createMeadow({ mobile = false, path } = {}) {
   // The flight gap is filled with soft, low grass rather than bare earth. The
   // closely spaced, bowed leaves overlap in perspective and form a lawn-like
   // carpet below the bee, with enough clearance for every camera orbit.
-  const turfCount = mobile ? 18000 : 26000;
+  const turfCount = mobile ? 16000 : 22000;
   const turfGeometry = makeGrassClump(true);
-  const turfPalette = ['#627d43', '#506b37', '#819554', '#728c4b', '#46622f', '#91a168'].map(c => new THREE.Color(c));
+  const turfPalette = ['#86a94d', '#749944', '#a1b961', '#94af54', '#668b3c', '#b0c474'].map(c => new THREE.Color(c));
   const turfPerChunk = Array.from({ length: depthChunks }, () => []);
   for (let i = 0; i < turfCount; i++) {
     const z = 12 - random() * 187;
@@ -210,10 +213,10 @@ export function createMeadow({ mobile = false, path } = {}) {
     else if (spreadRegion < 0.92) x = routeX + (random() < 0.5 ? -1 : 1) * (3 + random() * 9);
     else x = (random() - 0.5) * 50;
     x = THREE.MathUtils.clamp(x, -25, 25);
-    const height = 0.17 + Math.pow(random(), 0.8) * 0.33;
-    const spread = 0.82 + random() * 0.7;
+    const height = 0.24 + Math.pow(random(), 0.8) * 0.36;
+    const spread = 0.76 + random() * 0.55;
     const tint = turfPalette[Math.floor(random() * turfPalette.length)].clone();
-    tint.multiplyScalar(0.86 + random() * 0.22);
+    tint.multiplyScalar(0.93 + random() * 0.15);
     turfPerChunk[Math.min(depthChunks - 1, Math.floor((12 - z) / 187 * depthChunks))].push({
       x, z, height, spread, tint, yaw: random() * Math.PI * 2,
     });
@@ -227,9 +230,12 @@ export function createMeadow({ mobile = false, path } = {}) {
     finishInstances(mesh, `Low meadow carpet ${chunk + 1}`);
   });
 
-  const leafGeometry = makeLeafGeometry(0.62, 0.14);
-  const leafMaterial = plantMaterial({ color: '#7a8d48', vertexColors: true });
-  const stemMaterial = plantMaterial({ color: '#647d3c' });
+  const leafGeometry = makeLeafGeometry(0.68, 0.18);
+  const leafMaterial = plantMaterial({
+    color: '#ffffff', vertexColors: true,
+    emissive: '#64883d', emissiveIntensity: 0.045,
+  });
+  const stemMaterial = plantMaterial({ color: '#7e9b48' });
   const stemGeometry = new THREE.CylinderGeometry(0.009, 0.016, 1, 5, 1);
   stemGeometry.translate(0, 0.5, 0);
 
@@ -243,7 +249,7 @@ export function createMeadow({ mobile = false, path } = {}) {
   }
 
   // Broad, creased leaves catch the low morning light among the thin blades.
-  const broadPlantCount = mobile ? 480 : 800;
+  const broadPlantCount = mobile ? 550 : 1000;
   const broadStems = new THREE.InstancedMesh(stemGeometry, stemMaterial, broadPlantCount);
   const broadLeaves = new THREE.InstancedMesh(leafGeometry, leafMaterial, broadPlantCount * 3);
   for (let i = 0; i < broadPlantCount; i++) {
@@ -262,23 +268,23 @@ export function createMeadow({ mobile = false, path } = {}) {
       dummy.updateMatrix();
       const index = i * 3 + j;
       broadLeaves.setMatrixAt(index, dummy.matrix);
-      broadLeaves.setColorAt(index, color.set('#b7c08a').multiplyScalar(0.78 + random() * 0.2));
+      broadLeaves.setColorAt(index, color.set('#90ad5b').multiplyScalar(0.89 + random() * 0.18));
     }
   }
   finishInstances(broadStems, 'Broadleaf stems');
   finishInstances(broadLeaves, 'Creased meadow leaves');
 
-  const daisyCount = mobile ? 44 : 58;
-  const lilacCount = mobile ? 16 : 22;
+  const daisyCount = mobile ? 76 : 132;
+  const lilacCount = mobile ? 28 : 46;
   const flowerCount = daisyCount + lilacCount + 1;
   const flowerStems = new THREE.InstancedMesh(makeFlowerStem(), stemMaterial, flowerCount);
   const flowerLeaves = new THREE.InstancedMesh(leafGeometry, leafMaterial, flowerCount * 2);
-  const daisyGeometry = makePetals({ count: 13, length: 0.245, width: 0.055, inner: 0.055, seed: 97 });
-  const creamMaterial = plantMaterial({ color: '#f7efd4', roughness: 0.9 });
+  const daisyGeometry = makePetals({ count: 13, length: 0.255, width: 0.061, inner: 0.055, seed: 97 });
+  const creamMaterial = plantMaterial({ color: '#ffffff', roughness: 0.9 });
   const daisies = new THREE.InstancedMesh(daisyGeometry, creamMaterial, daisyCount + 1);
-  const centers = new THREE.InstancedMesh(makeFlowerCenter(), plantMaterial({ color: '#b5a24e', roughness: 1 }), daisyCount + 1);
-  const lilacPetals = makePetals({ count: 5, length: 0.09, width: 0.047, inner: 0.011, seed: 416 });
-  const lilacs = new THREE.InstancedMesh(lilacPetals, plantMaterial({ color: '#ad9ab9', roughness: 0.95 }), lilacCount * 5);
+  const centers = new THREE.InstancedMesh(makeFlowerCenter(), plantMaterial({ color: '#ffffff', roughness: 1 }), daisyCount + 1);
+  const lilacPetals = makePetals({ count: 5, length: 0.112, width: 0.062, inner: 0.011, seed: 416 });
+  const lilacs = new THREE.InstancedMesh(lilacPetals, plantMaterial({ color: '#ffffff', roughness: 0.95 }), lilacCount * 5);
   const lilacBranchCount = lilacCount * 4;
   const lilacBranches = new THREE.InstancedMesh(stemGeometry, stemMaterial, lilacBranchCount);
   let branchIndex = 0;
@@ -293,7 +299,7 @@ export function createMeadow({ mobile = false, path } = {}) {
       dummy.scale.setScalar(0.52 + j * 0.08);
       dummy.updateMatrix();
       flowerLeaves.setMatrixAt(index * 2 + j, dummy.matrix);
-      flowerLeaves.setColorAt(index * 2 + j, color.set('#bec699'));
+      flowerLeaves.setColorAt(index * 2 + j, color.set('#95b365'));
     }
     return p.clone().add(new THREE.Vector3(0.1 * Math.cos(yaw) + 0.03 * Math.sin(yaw), height, -0.1 * Math.sin(yaw) + 0.03 * Math.cos(yaw)));
   }
@@ -307,12 +313,12 @@ export function createMeadow({ mobile = false, path } = {}) {
     const h = finalFlower ? 2.7 : 0.9 + random() * 1.3;
     const yaw = random() * Math.PI * 2;
     const head = addFlowerStem(i, p, h, yaw);
-    const size = finalFlower ? 1.9 : 0.68 + random() * 0.55;
+    const size = finalFlower ? 1.9 : 0.86 + random() * 0.60;
     const rotation = new THREE.Euler((random() - 0.5) * 0.48, yaw, (random() - 0.5) * 0.48);
     setInstance(daisies, i, head, new THREE.Vector3(size, size, size), rotation,
-      color.set(finalFlower ? '#fff5d9' : '#f2ecd8').multiplyScalar(0.92 + random() * 0.1));
+      color.set(finalFlower ? '#fff9e7' : i % 7 === 0 ? '#f8ded3' : '#fff9e7').multiplyScalar(0.96 + random() * 0.08));
     setInstance(centers, i, head, new THREE.Vector3(size, size, size), rotation,
-      color.set('#d6be61').multiplyScalar(0.92 + random() * 0.13));
+      color.set('#e7bb45').multiplyScalar(0.96 + random() * 0.12));
   }
 
   for (let i = 0; i < lilacCount; i++) {
@@ -327,7 +333,7 @@ export function createMeadow({ mobile = false, path } = {}) {
       const size = 0.8 + random() * 0.5;
       setInstance(lilacs, i * 5 + j, flowerPosition, new THREE.Vector3(size, size, size),
         new THREE.Euler((random() - 0.5) * 0.8, angle, (random() - 0.5) * 0.8),
-        color.set('#d1c1d6').multiplyScalar(0.88 + random() * 0.17));
+        color.set(i % 3 === 0 ? '#ecc7df' : '#cfb4e5').multiplyScalar(0.94 + random() * 0.12));
       if (j) {
         const branchStart = head.clone().add(scratch.set(0, -0.25, 0));
         const delta = flowerPosition.clone().sub(branchStart);
@@ -359,7 +365,7 @@ export function createMeadow({ mobile = false, path } = {}) {
   // PolyhedronGeometry supplies smooth radial normals. Keep them after the
   // subtle displacement; recomputing a non-indexed mesh would create facets.
   hedgeGeometry.normalizeNormals();
-  const hedge = new THREE.InstancedMesh(hedgeGeometry, new THREE.MeshStandardMaterial({ color: '#72856b', roughness: 1 }), hedgeCount);
+  const hedge = new THREE.InstancedMesh(hedgeGeometry, new THREE.MeshStandardMaterial({ color: '#ffffff', roughness: 1 }), hedgeCount);
   for (let i = 0; i < hedgeCount; i++) {
     const side = i % 2 ? -1 : 1;
     const z = -16 - (i / 2) * (mobile ? 10.8 : 7.1) + random() * 6;
@@ -367,7 +373,7 @@ export function createMeadow({ mobile = false, path } = {}) {
     setInstance(hedge, i, new THREE.Vector3(side * (27 + random() * 5), height * 0.38, z),
       new THREE.Vector3(3.8 + random() * 2, height, 5 + random() * 3),
       new THREE.Euler(0, random() * Math.PI, (random() - 0.5) * 0.18),
-      color.set('#a4b495').multiplyScalar(0.76 + random() * 0.13));
+      color.set('#91ad69').multiplyScalar(0.86 + random() * 0.13));
   }
   finishInstances(hedge, 'Peripheral sage hedgerow');
 
@@ -399,16 +405,16 @@ function seededRandom(seed) {
 
 function makeGrassClump(turf = false) {
   const positions = [], colors = [], indices = [];
-  const segments = turf ? 3 : 6;
+  const segments = turf ? 4 : 6;
   const configurations = turf ? [
-    { x: 0, z: 0, angle: 0.23, height: 1, width: 0.13, bend: 0.54, droop: 0.2 },
-    { x: 0.13, z: -0.065, angle: 2.6, height: 0.85, width: 0.12, bend: 0.61, droop: 0.24 },
-    { x: -0.095, z: 0.12, angle: 4.8, height: 0.71, width: 0.11, bend: 0.48, droop: 0.16 },
-    { x: 0.02, z: -0.09, angle: 5.7, height: 0.92, width: 0.1, bend: 0.67, droop: 0.27 },
+    { x: 0, z: 0, angle: 0.23, height: 1, width: 0.072, bend: 0.16, droop: 0.07 },
+    { x: 0.13, z: -0.065, angle: 2.6, height: 0.85, width: 0.068, bend: 0.22, droop: 0.10 },
+    { x: -0.095, z: 0.12, angle: 4.8, height: 0.71, width: 0.065, bend: 0.18, droop: 0.08 },
+    { x: 0.02, z: -0.09, angle: 5.7, height: 0.92, width: 0.067, bend: 0.26, droop: 0.12 },
   ] : [
-    { x: 0, z: 0, angle: 0.23, height: 1, width: 0.105, bend: 0.35, droop: 0.08 },
-    { x: 0.13, z: -0.065, angle: 2.6, height: 0.86, width: 0.085, bend: 0.48, droop: 0.15 },
-    { x: -0.095, z: 0.12, angle: 4.8, height: 0.71, width: 0.093, bend: 0.41, droop: 0.1 },
+    { x: 0, z: 0, angle: 0.23, height: 1, width: 0.10, bend: 0.42, droop: 0.10 },
+    { x: 0.13, z: -0.065, angle: 2.6, height: 0.86, width: 0.085, bend: 0.56, droop: 0.18 },
+    { x: -0.095, z: 0.12, angle: 4.8, height: 0.71, width: 0.09, bend: 0.46, droop: 0.13 },
   ];
   for (const blade of configurations) {
     const base = positions.length / 3;
@@ -418,7 +424,7 @@ function makeGrassClump(turf = false) {
       const t = row / segments;
       const width = blade.width * Math.pow(1 - t, 0.55) * (0.35 + 0.65 * Math.sin(t * Math.PI));
       const lean = blade.bend * t * t;
-      const sideCurve = Math.sin(t * Math.PI) * (turf ? 0.07 : 0.035);
+      const sideCurve = Math.sin(t * Math.PI) * (turf ? 0.023 : 0.035);
       for (let edge = -1; edge <= 1; edge++) {
         const fold = edge === 0 ? 0.013 * Math.sin(Math.PI * t) : 0;
         positions.push(
@@ -426,7 +432,7 @@ function makeGrassClump(turf = false) {
           blade.height * t * (1 - blade.droop * t * t),
           blade.z + sideZ * (width * edge + sideCurve) + forwardZ * (lean + fold),
         );
-        colors.push(0.63 + 0.34 * t, 0.75 + 0.25 * t, 0.54 + 0.36 * t);
+        colors.push(0.80 + 0.20 * t, 0.87 + 0.13 * t, 0.69 + 0.27 * t);
       }
     }
     for (let row = 0; row < segments; row++) {
@@ -446,13 +452,13 @@ function makeGrassClump(turf = false) {
 
 function makeLeafGeometry(length, width) {
   const positions = [], colors = [], indices = [];
-  const rows = 7;
+  const rows = 9;
   for (let row = 0; row <= rows; row++) {
     const t = row / rows;
-    const w = width * Math.pow(Math.sin(t * Math.PI), 0.83) * (1 - t * 0.25);
+    const w = width * Math.pow(Math.sin(t * Math.PI), 0.62) * (1 - t * 0.15);
     for (let edge = -1; edge <= 1; edge++) {
-      positions.push(w * edge, t * length, 0.075 * t * t + (edge === 0 ? 0.018 * Math.sin(t * Math.PI) : -0.012 * Math.sin(t * Math.PI)));
-      colors.push(0.74 + t * 0.24, 0.83 + t * 0.17, 0.64 + t * 0.24);
+      positions.push(w * edge, t * length, 0.11 * t * t + (edge === 0 ? 0.018 * Math.sin(t * Math.PI) : -0.012 * Math.sin(t * Math.PI)));
+      colors.push(0.84 + t * 0.16, 0.91 + t * 0.09, 0.72 + t * 0.23);
     }
   }
   for (let row = 0; row < rows; row++) {
@@ -479,7 +485,7 @@ function makeFlowerStem() {
 function makePetals({ count, length, width, inner, seed }) {
   const random = seededRandom(seed);
   const positions = [], indices = [];
-  const rows = 6;
+  const rows = 8;
   for (let petal = 0; petal < count; petal++) {
     const angle = petal / count * Math.PI * 2 + (random() - 0.5) * 0.18;
     const extent = length * (0.8 + random() * 0.3);
@@ -489,7 +495,7 @@ function makePetals({ count, length, width, inner, seed }) {
     for (let row = 0; row <= rows; row++) {
       const t = row / rows;
       const radius = inner + extent * t;
-      const w = fullness * Math.pow(Math.sin(Math.PI * t), 0.65);
+      const w = fullness * Math.pow(Math.sin(Math.PI * t), 0.48);
       const twist = Math.sin(t * Math.PI) * (random() - 0.5) * 0.013;
       for (let edge = -1; edge <= 1; edge++) {
         const lateral = edge * w + twist;
