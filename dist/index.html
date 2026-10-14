@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#1b2315">
+  <meta name="description" content="작은 날갯짓, 커다란 연결. 뒤엉벌과 함께 꽃과 꽃 사이의 세계로 떠나는 여정.">
+  <title>뒤엉벌 — 작은 날갯짓, 커다란 연결</title>
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="preload" href="assets/PretendardVariable.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="assets/bumblebee.png" as="image">
+  <link rel="stylesheet" href="style.css">
+  <script src="vendor/gsap.min.js" defer></script>
+  <script src="vendor/ScrollTrigger.min.js" defer></script>
+  <script src="vendor/lenis.min.js" defer></script>
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#story">이야기 본문으로</a>
+  <main id="journey" aria-label="뒤엉벌의 첫 비행">
+    <div class="stage">
+      <div class="landscape" aria-hidden="true"><img src="assets/meadow.png" alt="" fetchpriority="high"></div>
+      <div class="atmosphere" aria-hidden="true"></div>
+      <div class="sun-glow" aria-hidden="true"></div>
+      <canvas id="pollen" aria-hidden="true"></canvas>
+      <div class="grain" aria-hidden="true"></div>
+
+      <header class="header">
+        <a class="brand" href="#" aria-label="뒤엉벌 처음으로">
+          <svg class="brand-mark" viewBox="0 0 40 40" fill="none" aria-hidden="true"><path d="M20 20C5 21 3 9 10 8c6-1 10 12 10 12Zm0 0C35 21 37 9 30 8c-6-1-10 12-10 12Z" stroke="currentColor" stroke-width="1.5"/><path d="M20 17c-7 0-10 16 0 19 10-3 7-19 0-19Z" stroke="currentColor" stroke-width="1.5"/><path d="M15 25h10m-10 5h10M18 17l-3-5m7 5 3-5" stroke="currentColor" stroke-width="1.5"/></svg>
+          <span>뒤엉벌</span><span class="brand-en">DWEO<br>NGBEOL</span>
+        </a>
+        <div class="edition">A SMALL FLIGHT, A LIVING WORLD</div>
+        <button class="about-trigger" type="button" aria-haspopup="dialog">우리의 이야기 <span aria-hidden="true">↗</span></button>
+      </header>
+
+      <div class="scene-heading" aria-hidden="true"><span class="status-dot"></span><span id="scene-label">PROLOGUE — THE FIRST FLIGHT</span></div>
+
+      <section class="intro-copy" id="story">
+        <p class="eyebrow"><span class="tiny-line"></span>작은 존재로부터 시작되는 이야기</p>
+        <h1><span>작은 날갯짓,</span><span>커다란 <em>연결.</em></span></h1>
+        <p class="intro-note">꽃과 꽃 사이, 생명과 생명 사이.<br>뒤엉벌의 시선으로 세상을 만나보세요.</p>
+      </section>
+
+      <div class="bee-flight" role="img" aria-label="금빛 털과 반투명 날개를 가진 호박벌이 공중을 날고 있습니다">
+        <div class="bee-depth"><div class="bee-hover">
+          <img class="bee-wing wing-back" src="assets/bumblebee.png" alt="" aria-hidden="true">
+          <img class="bee-wing wing-front" src="assets/bumblebee.png" alt="" aria-hidden="true">
+          <img class="bee-body" src="assets/bumblebee.png" alt="" aria-hidden="true">
+        </div></div>
+      </div>
+      <div class="specimen" aria-hidden="true"><span class="specimen-line"></span><span>BOMBUS<span class="specimen-ko">호박벌, 세상을 잇는 작은 비행가</span></span><span class="specimen-plus">+</span></div>
+
+      <section class="detail-copy scene-copy" aria-hidden="true" inert>
+        <p class="eyebrow">01 / A CLOSER LOOK</p>
+        <h2>가까이 보면,<br>더 큰 세계.</h2>
+        <p>빛을 머금은 날개.<br>꽃가루를 품는 작은 몸.<br>하나의 연결은 여기서 시작됩니다.</p>
+      </section>
+      <div class="detail-label" aria-hidden="true"><span class="detail-line"></span><span>섬세한 날개, 힘찬 시작<br><i>A quiet wonder.</i></span></div>
+
+      <section class="flight-copy scene-copy" aria-hidden="true" inert>
+        <p class="eyebrow">02 / INTO THE LIVING WORLD</p>
+        <h2>다음 꽃을 향해.<br><em>다음 생명을 향해.</em></h2>
+        <p>작은 비행이 이어질 때,<br>세상은 조금 더 다채로워집니다.</p>
+        <button class="replay" type="button">처음부터 다시 비행하기 <span aria-hidden="true">↺</span></button>
+      </section>
+      <span class="flight-whisper" aria-hidden="true">Every little thing is connected.</span>
+
+      <nav class="chapter-nav" aria-label="인트로 장면 선택">
+        <button type="button" data-scene="0" class="active" aria-label="첫 장면, 작은 날갯짓" aria-current="step"><span class="chapter-num">01</span><span class="chapter-line"></span></button>
+        <button type="button" data-scene="1" aria-label="두 번째 장면, 가까이 보기"><span class="chapter-num">02</span><span class="chapter-line"></span></button>
+        <button type="button" data-scene="2" aria-label="세 번째 장면, 다음 꽃을 향해"><span class="chapter-num">03</span><span class="chapter-line"></span></button>
+      </nav>
+
+      <footer class="footer">
+        <div class="footer-note"><span>자연의 연결을 따라</span><span class="footer-en">FOLLOW THE LITTLE WINGS</span></div>
+        <button class="scroll-cue" type="button"><span class="scroll-circle" aria-hidden="true">↓</span><span class="scroll-text">스크롤로 비행을 시작하세요</span></button>
+        <button class="motion-toggle" type="button" aria-pressed="false" aria-label="움직임 줄이기"><span class="motion-icon" aria-hidden="true"><i></i><i></i><i></i><i></i></span><span class="motion-text">MOTION ON</span></button>
+      </footer>
+      <div class="progress-track" aria-hidden="true"><div class="progress-bar"></div></div>
+    </div>
+  </main>
+  <dialog class="about-dialog" aria-labelledby="about-title">
+    <button class="dialog-close" type="button" aria-label="이야기 닫기">×</button>
+    <p class="eyebrow">THE STORY OF DWEO NGBEOL</p>
+    <h2 id="about-title">작은 존재가 잇는<br>커다란 세계.</h2>
+    <p>뒤엉벌은 꽃과 꽃 사이를 오가는 작은 비행에서 시작합니다. 눈에 잘 보이지 않는 움직임이 어떻게 생명과 생명을 연결하는지, 벌의 시선으로 따라갑니다.</p>
+    <p>천천히 스크롤해 보세요.<br>하나의 시선으로 이어지는 여정이 펼쳐집니다.</p>
+    <button class="dialog-start" type="button">첫 비행 함께하기 <span aria-hidden="true">↗</span></button>
+  </dialog>
+  <noscript><div class="no-script">작은 날갯짓, 커다란 연결. 스크롤 비행을 보려면 JavaScript를 켜 주세요.</div></noscript>
+</body>
+</html>
