@@ -14,6 +14,10 @@ python3 -m http.server 4173 --directory dist
 
 브라우저에서 `http://localhost:4173`을 엽니다.
 
+## Vercel 배포
+
+저장소 루트를 Root Directory로 사용합니다. `vercel.json`이 정적 사이트의 Output Directory를 `dist`로 지정합니다. 별도의 설치나 빌드 명령은 필요하지 않습니다.
+
 ## 구성
 
 - `dist/index.html`: 화면 구조
