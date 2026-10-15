@@ -46,5 +46,9 @@ npm run build:pages
 
 - 모션 참고: [ATMOS by Leeroy](https://atmos.leeroy.ca/). 전체 스크롤 비행을 확인한 뒤 추격 카메라와 장면 연결을 참고했습니다.
 - 콘텐츠: 사용자 제공 홈페이지 기획안, [자연수정벌 공식 블로그](https://blog.naver.com/naturebul), [인스타그램](https://www.instagram.com/nature_bumblebee/).
-- Three.js 0.180.0: MIT / Lenis 1.3.11: MIT / GSAP·ScrollTrigger 3.13.0: Standard License / Pretendard: SIL Open Font License 1.1. 전문은 해당 폴더에 포함합니다.
+- Three.js 0.180.0: MIT / Lenis 1.3.11: MIT / GSAP·ScrollTrigger 3.13.0: Standard License / Paperlogy: SIL Open Font License 1.1. 전문은 해당 폴더에 포함합니다.
 - 이전 인트로의 ImageGen 배경 생성 기록은 `ASSET-PROMPTS.txt`에 보관했습니다. 현재 비행 중 벌과 식생은 코드로 생성한 표현용 모델입니다.
+
+## 브랜드 디자인
+
+2026.10.15 제공된 공식 로고 원본을 메뉴·인트로·푸터·상담 영역과 파비콘에 적용했습니다. 로고 원본의 색상과 글자를 수정하지 않습니다. 제공된 색상 자료를 sRGB로 확인한 오렌지 `#F39C00`, 딥 오렌지 `#EB6200`, 레드 `#E60013`을 사용합니다. UI 표면은 화이트 `#FFFFFF`이며, 서체는 [페이퍼로지 공식 배포처](https://freesentation.blog/paperlogyfont)의 1.001 버전을 WOFF2로 변환해 자체 제공합니다. OFL 전문은 `dist/assets/fonts/Paperlogy-OFL.txt`에 포함합니다.

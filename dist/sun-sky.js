@@ -8,9 +8,9 @@ export function createSunSky() {
   group.name = 'Soft sunlit morning sky';
   const sunDirection = new THREE.Vector3(0.42, 0.28, -1).normalize();
   const uniforms = {
-    horizon: { value: new THREE.Color('#f4f1d7') },
-    lowerSky: { value: new THREE.Color('#e2ead6') },
-    upperSky: { value: new THREE.Color('#b7dce5') },
+    horizon: { value: new THREE.Color('#ffffff') },
+    lowerSky: { value: new THREE.Color('#eef5f5') },
+    upperSky: { value: new THREE.Color('#b9e0f3') },
     sunshine: { value: new THREE.Color('#fff5cf') },
     sunDirection: { value: sunDirection },
   };

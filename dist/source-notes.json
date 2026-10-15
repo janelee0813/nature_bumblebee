@@ -58,5 +58,21 @@
     "main_message": "일 잘하는 벌, 자연수정벌",
     "product": "고품질 뒤영벌",
     "colony_size": "통 당 130마리 내외"
+  },
+  "brand_identity": {
+    "confirmed_at": "2026-10-15",
+    "logo": "assets/brand-logo.png",
+    "logo_source": "Official logo supplied by brand owner, used without alteration.",
+    "colors": {
+      "orange": "#F39C00",
+      "deep_orange": "#EB6200",
+      "red": "#E60013",
+      "surface": "#FFFFFF"
+    },
+    "color_source": "Brand owner supplied envelope reference; sampled in sRGB.",
+    "typeface": "Paperlogy",
+    "font_source": "https://freesentation.blog/paperlogyfont",
+    "font_license": "SIL Open Font License 1.1",
+    "font_package": "https://github.com/Freesentation/paperlogy/raw/refs/heads/main/Paperlogy-1.001.zip"
   }
 }
