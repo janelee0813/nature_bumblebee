@@ -174,7 +174,7 @@ function storyCards() {
 
 function aboutPage() {
   return `${breadcrumbs('자연수정벌 소개')}${heading('NATURE BUMBLEBEE', '꽃을 잇는 작은 비행,<br>농가와 이어가는 이야기.', '자연수정벌은 경북 청송에서 수정벌을 생산·공급하며<br class="desktop-break"> 작물과 농가의 조건을 함께 살피는 브랜드입니다.')}
-    <section class="split-layout page-section" aria-labelledby="about-story-title"><div>${photo(images.bee, '체리꽃에서 꽃가루를 모으는 호박벌', '체리꽃에서 활동하는 호박벌. 자연수정벌 공식 인스타그램에 공개된 사진입니다.')}</div><div><p class="section-kicker">ROOTED IN CHEONGSONG</p><h2 id="about-story-title" class="section-title">기르는 일에서,<br>농가에 닿는 일까지.</h2><p class="body-copy">수정벌의 작은 날갯짓은 꽃과 꽃 사이를 잇습니다. 자연수정벌은 그 비행이 농가의 재배 환경 속에서 이어지도록, 제품 안내와 사용 상담을 함께 연결합니다.</p><p class="body-copy">공식 블로그에서는 2009년부터 이어온 자체 생산·공급의 경험을 소개합니다. 처음 사용하는 농가를 위한 관리 안내부터 오래 함께한 농가의 현장 기록까지, 생산자의 이야기를 전하고 있습니다.</p>${external(sources.family, '생산자와 가족의 이야기 읽기')}</div></section>
+    <section class="split-layout page-section" aria-labelledby="about-story-title"><div>${photo(images.bee, '체리꽃에서 꽃가루를 모으는 수정벌', '체리꽃에서 활동하는 수정벌. 자연수정벌 공식 인스타그램에 공개된 사진입니다.')}</div><div><p class="section-kicker">ROOTED IN CHEONGSONG</p><h2 id="about-story-title" class="section-title">기르는 일에서,<br>농가에 닿는 일까지.</h2><p class="body-copy">수정벌의 작은 날갯짓은 꽃과 꽃 사이를 잇습니다. 자연수정벌은 그 비행이 농가의 재배 환경 속에서 이어지도록, 제품 안내와 사용 상담을 함께 연결합니다.</p><p class="body-copy">공식 블로그에서는 2009년부터 이어온 자체 생산·공급의 경험을 소개합니다. 처음 사용하는 농가를 위한 관리 안내부터 오래 함께한 농가의 현장 기록까지, 생산자의 이야기를 전하고 있습니다.</p>${external(sources.family, '생산자와 가족의 이야기 읽기')}</div></section>
     <section class="page-section" aria-labelledby="about-process-title"><div class="section-heading"><p class="section-kicker">CARE, FROM THE BEGINNING</p><h2 id="about-process-title" class="section-title">공급을 준비하며<br>함께 확인하는 것들.</h2><p class="body-copy">우리 농장의 작물과 환경을 알려주시면,<br>제품과 공급 조건부터 사용 안내까지 차례로 확인합니다.</p></div>${steps([
       { title: '작물과 환경', copy: '작물명, 재배 지역, 시설·노지 여부와 개화 상태를 함께 살펴봅니다.' },
       { title: '봉군과 공급 조건', copy: '현재 공급되는 제품의 구성과 맞춤 공급 가능 여부를 확인합니다.' },
@@ -188,7 +188,7 @@ function aboutPage() {
 
 function productsPage() {
   return `${breadcrumbs('제품·주문')}${heading('A LITTLE HELP FOR EVERY FLOWER', '우리 작물의 꽃과 함께할<br>자연수정벌.', '대표 제품을 이해하고, 농장에 맞는 공급 조건을 확인하세요.')}
-    <section class="split-layout product-detail page-section" aria-labelledby="product-title"><div>${photo(images.product, '자연수정벌 공식 안내에 소개된 실제 벌통', '자연수정벌 공식 사용 안내의 실제 벌통 사진입니다. 현재 출고 규격·구성은 주문 전 확인해 주세요.')}</div><div><p class="section-kicker">NATURE BUMBLEBEE / 대표 제품</p><h2 id="product-title" class="section-title">작물을 위한<br>수정벌 봉군.</h2><p class="body-copy">호박벌·뒤영벌의 꽃 활동을 활용하는 수정벌 제품입니다. 작물과 재배 환경에 맞는 사용 여부, 필요한 봉군과 공급 일정은 주문 전에 함께 확인합니다.</p><dl class="product-facts"><div><dt>공급 브랜드</dt><dd>자연수정벌</dd></div><div><dt>생산 지역</dt><dd>경북 청송</dd></div><div><dt>공급 단위</dt><dd>벌통 단위의 봉군</dd></div><div><dt>제품 구성</dt><dd>현재 출고 규격과 구성품은 주문 전 확인</dd></div><div><dt>맞춤 공급</dt><dd>작물·수량·희망 일정 상담</dd></div></dl><div class="button-row">${order('수정벌 구매하기')}${consult()}</div><p class="small-note">상품 구성·가격·판매 조건은 현재 판매 안내를 기준으로 확인해 주세요.</p></div></section>
+    <section class="split-layout product-detail page-section" aria-labelledby="product-title"><div>${photo(images.product, '자연수정벌 공식 안내에 소개된 실제 벌통', '자연수정벌 공식 사용 안내의 실제 벌통 사진입니다. 현재 출고 규격·구성은 주문 전 확인해 주세요.')}</div><div><p class="section-kicker">NATURE BUMBLEBEE / 대표 제품</p><h2 id="product-title" class="section-title">작물을 위한<br>수정벌 봉군.</h2><p class="body-copy">통 당 130마리 내외로 구성된 고품질 뒤영벌 제품입니다. 작물과 재배 환경에 맞는 사용 여부, 필요한 봉군과 공급 일정은 주문 전에 함께 확인합니다.</p><dl class="product-facts"><div><dt>공급 브랜드</dt><dd>자연수정벌</dd></div><div><dt>생산 지역</dt><dd>경북 청송</dd></div><div><dt>공급 단위</dt><dd>벌통 단위의 봉군</dd></div><div><dt>봉군 구성</dt><dd>고품질 뒤영벌 · 통 당 130마리 내외</dd></div><div><dt>맞춤 공급</dt><dd>작물·수량·희망 일정 상담</dd></div></dl><div class="button-row">${order('수정벌 구매하기')}${consult()}</div><p class="small-note">상품 구성·가격·판매 조건은 현재 판매 안내를 기준으로 확인해 주세요.</p></div></section>
     <section class="page-section" aria-labelledby="product-fit-title"><div class="section-heading"><p class="section-kicker">FIND YOUR CROP</p><h2 id="product-fit-title" class="section-title">먼저, 우리 작물부터.</h2><p class="body-copy">토마토·딸기·블루베리·참외·과수 안내에서<br>상담에 필요한 재배 조건을 확인할 수 있습니다.</p></div>${cropCards()}</section>
     <section class="page-section" aria-labelledby="product-order-title"><p class="section-kicker">ORDER, STEP BY STEP</p><h2 id="product-order-title" class="section-title">주문은 이렇게 준비하세요.</h2>${steps([
       { title: '재배 조건 정리', copy: '작물, 지역, 재배 면적과 단위, 시설·노지 여부를 준비합니다. 알고 계신 항목부터 시작해도 괜찮습니다.' },
@@ -259,7 +259,7 @@ export function renderPage(requestedPage) {
   if (page === 'about') {
     markup = aboutPage(); title = '자연수정벌 소개'; description = '경북 청송에서 이어온 자연수정벌의 생산·공급 이야기와 공식 채널을 소개합니다.';
   } else if (page === 'products') {
-    markup = productsPage(); title = '수정벌 제품·주문 안내'; description = '자연수정벌 대표 제품과 작물별 사용 상담, 주문과 도착 후 확인 사항을 안내합니다.';
+    markup = productsPage(); title = '수정벌 제품·주문 안내'; description = '고품질 뒤영벌, 통 당 130마리 내외. 자연수정벌 제품과 작물별 사용 상담, 주문과 도착 후 확인 사항을 안내합니다.';
   } else if (page === 'crops') {
     const crop = crops.find(item => item.id === params.get('crop'));
     markup = crop ? cropDetailPage(crop) : cropsPage(); title = crop ? `${crop.name} 수정벌 사용 안내` : '작물별 수정벌 사용법'; description = crop ? `${crop.name} 농가의 수정벌 사용 상담을 위한 재배 조건과 도착·관리 확인 사항.` : '토마토, 딸기, 블루베리, 참외, 과수의 수정벌 사용 상담을 준비해 보세요.';

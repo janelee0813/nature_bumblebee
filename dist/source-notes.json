@@ -36,7 +36,7 @@
     {
       "asset": "assets/site-bee.jpg",
       "source": "https://www.instagram.com/p/DXJLkWqGXqF/",
-      "description": "체리꽃에서 꽃가루를 모으는 실제 호박벌"
+      "description": "체리꽃에서 꽃가루를 모으는 실제 수정벌"
     },
     {
       "asset": "assets/brand/generation-1.jpg",
@@ -51,5 +51,12 @@
   ],
   "crop_art": "Original SVG botanical illustrations.",
   "flight": "Procedural Three.js bumblebee and meadow.",
-  "selling_conditions": "Current price, bee count, lead time and compensation policy are not stated; confirm via official seller."
+  "selling_conditions": "Current price, lead time and compensation policy are not stated; confirm via official seller.",
+  "product_details": {
+    "confirmed_by": "brand owner in conversation",
+    "confirmed_at": "2026-10-15",
+    "main_message": "일 잘하는 벌, 자연수정벌",
+    "product": "고품질 뒤영벌",
+    "colony_size": "통 당 130마리 내외"
+  }
 }
